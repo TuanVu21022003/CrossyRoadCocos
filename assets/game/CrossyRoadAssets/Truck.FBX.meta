@@ -1,0 +1,183 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64",
+  "files": [],
+  "subMetas": {
+    "14693": {
+      "importer": "gltf-mesh",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@14693",
+      "displayName": "",
+      "id": "14693",
+      "name": "UCX_Truck.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 50
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "34931": {
+      "importer": "gltf-material",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@34931",
+      "displayName": "",
+      "id": "34931",
+      "name": "blinn17.material",
+      "userData": {
+        "gltfIndex": 4
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b6296": {
+      "importer": "gltf-mesh",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@b6296",
+      "displayName": "",
+      "id": "b6296",
+      "name": "Truck.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 216
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1ed0a": {
+      "importer": "gltf-material",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@1ed0a",
+      "displayName": "",
+      "id": "1ed0a",
+      "name": "blinn16.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "53ea3": {
+      "importer": "gltf-material",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@53ea3",
+      "displayName": "",
+      "id": "53ea3",
+      "name": "blinn14.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b225e": {
+      "importer": "gltf-material",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@b225e",
+      "displayName": "",
+      "id": "b225e",
+      "name": "blinn15.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "cc9a2": {
+      "importer": "gltf-scene",
+      "uuid": "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@cc9a2",
+      "displayName": "",
+      "id": "cc9a2",
+      "name": "Truck.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@b6296",
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@14693"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@1ed0a",
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@55b43",
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@53ea3",
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@b225e",
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@34931"
+      ],
+      "scenes": [
+        "e4d84dc1-e3b7-400b-a64b-bcbeb1bd7d64@cc9a2"
+      ]
+    }
+  }
+}

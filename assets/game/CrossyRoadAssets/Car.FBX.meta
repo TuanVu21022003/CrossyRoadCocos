@@ -1,0 +1,183 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd",
+  "files": [],
+  "subMetas": {
+    "83194": {
+      "importer": "gltf-mesh",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@83194",
+      "displayName": "",
+      "id": "83194",
+      "name": "Car.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 168
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0a4bd": {
+      "importer": "gltf-mesh",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@0a4bd",
+      "displayName": "",
+      "id": "0a4bd",
+      "name": "UCX_Car.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 40
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8d883": {
+      "importer": "gltf-material",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@8d883",
+      "displayName": "",
+      "id": "8d883",
+      "name": "lambert1.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "e8371": {
+      "importer": "gltf-material",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@e8371",
+      "displayName": "",
+      "id": "e8371",
+      "name": "blinn7.material",
+      "userData": {
+        "gltfIndex": 1
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "55b43": {
+      "importer": "gltf-material",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@55b43",
+      "displayName": "",
+      "id": "55b43",
+      "name": "lambert3.material",
+      "userData": {
+        "gltfIndex": 2
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c53b4": {
+      "importer": "gltf-material",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@c53b4",
+      "displayName": "",
+      "id": "c53b4",
+      "name": "blinn18.material",
+      "userData": {
+        "gltfIndex": 3
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "8db23": {
+      "importer": "gltf-material",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@8db23",
+      "displayName": "",
+      "id": "8db23",
+      "name": "blinn19.material",
+      "userData": {
+        "gltfIndex": 4
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "ea006": {
+      "importer": "gltf-scene",
+      "uuid": "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@ea006",
+      "displayName": "",
+      "id": "ea006",
+      "name": "Car.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@83194",
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@0a4bd"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@8d883",
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@e8371",
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@55b43",
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@c53b4",
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@8db23"
+      ],
+      "scenes": [
+        "3cdc5083-ff86-434d-9ecd-4bca6b29b9fd@ea006"
+      ]
+    }
+  }
+}

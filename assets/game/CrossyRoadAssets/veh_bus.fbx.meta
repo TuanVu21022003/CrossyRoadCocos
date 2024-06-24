@@ -1,0 +1,221 @@
+{
+  "ver": "2.3.13",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "2ba77319-aa0d-4451-9f6a-d12f493c19a9",
+  "files": [],
+  "subMetas": {
+    "6dcb3": {
+      "importer": "gltf-mesh",
+      "uuid": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@6dcb3",
+      "displayName": "",
+      "id": "6dcb3",
+      "name": "Plane-tex.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 316
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "aea24": {
+      "importer": "gltf-embeded-image",
+      "uuid": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@aea24",
+      "displayName": "",
+      "id": "aea24",
+      "name": "veh_bus_texture0-image.image",
+      "userData": {
+        "gltfIndex": 0,
+        "fixAlphaTransparencyArtifacts": true,
+        "hasAlpha": true,
+        "type": "texture",
+        "compressSettings": {
+          "useCompressTexture": false
+        }
+      },
+      "ver": "1.0.3",
+      "imported": true,
+      "files": [
+        ".json",
+        ".png"
+      ],
+      "subMetas": {}
+    },
+    "bff08": {
+      "importer": "texture",
+      "uuid": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@bff08",
+      "displayName": "",
+      "id": "bff08",
+      "name": "veh_bus_texture0-image.texture",
+      "userData": {
+        "wrapModeS": "repeat",
+        "wrapModeT": "repeat",
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0,
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@aea24"
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "4b3e5": {
+      "importer": "gltf-material",
+      "uuid": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@4b3e5",
+      "displayName": "",
+      "id": "4b3e5",
+      "name": "lambert0.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b4843": {
+      "importer": "gltf-scene",
+      "uuid": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@b4843",
+      "displayName": "",
+      "id": "b4843",
+      "name": "veh_bus.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [
+      {
+        "name": "veh_bus_texture0-image",
+        "uri": "2ba77319-aa0d-4451-9f6a-d12f493c19a9@aea24"
+      }
+    ],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "2ba77319-aa0d-4451-9f6a-d12f493c19a9@6dcb3"
+      ],
+      "skeletons": [],
+      "textures": [
+        "2ba77319-aa0d-4451-9f6a-d12f493c19a9@bff08"
+      ],
+      "materials": [
+        "2ba77319-aa0d-4451-9f6a-d12f493c19a9@4b3e5"
+      ],
+      "scenes": [
+        "2ba77319-aa0d-4451-9f6a-d12f493c19a9@b4843"
+      ]
+    },
+    "materials": {
+      "2ba77319-aa0d-4451-9f6a-d12f493c19a9@4b3e5": {
+        "__type__": "cc.Material",
+        "_name": "",
+        "_objFlags": 0,
+        "__editorExtras__": {},
+        "_native": "",
+        "_effectAsset": {
+          "__uuid__": "f648964e-8d32-41fc-9ac9-7a1e714dd17b",
+          "__expectedType__": "cc.EffectAsset"
+        },
+        "_techIdx": 0,
+        "_defines": [
+          {},
+          {},
+          {},
+          {}
+        ],
+        "_states": [
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          },
+          {
+            "rasterizerState": {},
+            "depthStencilState": {},
+            "blendState": {
+              "targets": [
+                {}
+              ]
+            }
+          }
+        ],
+        "_props": [
+          {
+            "mainColor": {
+              "__type__": "cc.Color",
+              "r": 248,
+              "g": 101,
+              "b": 101,
+              "a": 255
+            }
+          },
+          {},
+          {},
+          {}
+        ]
+      }
+    }
+  }
+}
