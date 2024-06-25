@@ -1,7 +1,7 @@
 [
   {
     "__type__": "cc.Prefab",
-    "_name": "GrassLine",
+    "_name": "TrailLine",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_native": "",
@@ -13,7 +13,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "GrassLine",
+    "_name": "TrailLine",
     "_objFlags": 0,
     "__editorExtras__": {},
     "_parent": null,
@@ -57,7 +57,7 @@
     "_id": ""
   },
   {
-    "__type__": "e4b95aGSEhGip6EQdjOSYfb",
+    "__type__": "b6733RNZcNGaqdJH7+4L/ZF",
     "_name": "",
     "_objFlags": 0,
     "__editorExtras__": {},
@@ -68,33 +68,26 @@
     "__prefab": {
       "__id__": 3
     },
+    "groundPrefab": {
+      "__uuid__": "9c681c42-fd47-480e-844d-88f588cbd288",
+      "__expectedType__": "cc.Prefab"
+    },
+    "lightWawnPrefab": {
+      "__uuid__": "801b9e41-6086-4e61-9317-7e0ac11b2fad",
+      "__expectedType__": "cc.Prefab"
+    },
     "listPlatform": [
       {
-        "__uuid__": "1633d852-f725-428d-a145-537e82511539",
-        "__expectedType__": "cc.Prefab"
-      },
-      {
-        "__uuid__": "1a24ca03-e9cd-4553-a180-ee1173e33791",
-        "__expectedType__": "cc.Prefab"
-      },
-      {
-        "__uuid__": "a9cf1685-5dc6-4d29-a6fa-3db64ffe7fe1",
+        "__uuid__": "439ce1f0-ae6d-461e-b8fb-5dd91d47e378",
         "__expectedType__": "cc.Prefab"
       }
     ],
-    "grass1": {
-      "__uuid__": "a54f92e4-8d1f-458d-ad3a-eaf5e781d743",
-      "__expectedType__": "cc.Prefab"
-    },
-    "grass2": {
-      "__uuid__": "b21d9f80-bdea-4ac0-a5f3-9f7725e2f645",
-      "__expectedType__": "cc.Prefab"
-    },
+    "durationSpawn": 6,
     "_id": ""
   },
   {
     "__type__": "cc.CompPrefabInfo",
-    "fileId": "b3wjdPdGdCWrtrFzUfAO5E"
+    "fileId": "475m8zcDxNM63qUjHK89Sr"
   },
   {
     "__type__": "cc.PrefabInfo",
@@ -104,7 +97,7 @@
     "asset": {
       "__id__": 0
     },
-    "fileId": "ebYHtXDUpK77u4x9idGUXK",
+    "fileId": "c5XEt6jZlIzJ/m99DOzDXO",
     "instance": null,
     "targetOverrides": null
   }

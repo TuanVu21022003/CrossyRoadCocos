@@ -1,61 +1,59 @@
 import { _decorator, Component, instantiate, Node, Prefab, Vec3 } from 'cc';
+import { ItemMapBase, ItemMapType } from '../ItemMapBase';
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseLine')
 export class BaseLine extends Component {
-    @property(Prefab)
-    groundPrefab: Prefab
 
-    @property(Prefab)
-    platformPrefab: Prefab
 
-    onInit() {
-        this.generateGround()
-        this.generatePlatform()
+    onInit(index : number) {
+        this.generateGround(index)
+        this.generatePlatform(index)
     }
 
-    generateGround() {
-        for (var i = -24; i <= 24; i += 2) {
-            let ground = instantiate(this.groundPrefab)
-            ground.parent = this.node
-            ground.setPosition(new Vec3(i, ground.getPosition().y, 0))
-        }
+    generateGround(index) {
+        
     }
 
-    generatePlatform() {
-        let amount = 3
-        let count = 0
-        for (var i = -24; i <= 24; i += 2) {
-            if (Math.abs(i) > 8) {
-                if (this.getRamdomTrueFalse()) {
-                    let platform = instantiate(this.platformPrefab)
-                    platform.parent = this.node
-                    platform.setPosition(new Vec3(i, platform.getPosition().y, 0))
-                }
-
-            }
-            else {
-                if (amount - count < (8 - i) / 2 + 1 && amount > count) {
-                    if (this.getRamdomTrueFalse()) {
-                        let platform = instantiate(this.platformPrefab)
-                        platform.parent = this.node
-                        platform.setPosition(new Vec3(i, platform.getPosition().y, 0))
-                        ++count
-                    }
-                }
-                else {
-                    let platform = instantiate(this.platformPrefab)
-                    platform.parent = this.node
-                    platform.setPosition(new Vec3(i, platform.getPosition().y, 0))
-                    ++count
-                }
-            }
-        }
+    generatePlatform(index) {
+        
     }
 
     getRamdomTrueFalse() {
         let random = Math.random()
         return random >= 0.5
+    }
+
+    getRandomOddMinMax(min: number, max: number): number {
+        // Đảm bảo rằng min là số lẻ
+        if (min % 2 === 0) {
+            min++;
+        }
+        // Đảm bảo rằng max là số lẻ
+        if (max % 2 === 0) {
+            max--;
+        }
+        
+        // Tạo một mảng chứa tất cả các số lẻ trong khoảng từ min đến max
+        const oddNumbers = [];
+        for (let i = min; i <= max; i += 2) {
+            oddNumbers.push(i);
+        }
+    
+        // Random một phần tử trong mảng oddNumbers
+        const randomIndex = Math.floor(Math.random() * oddNumbers.length);
+        return oddNumbers[randomIndex];
+    }
+
+    getRandomElement<T>(list: T[]): T {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        return list[randomIndex];
+    }
+
+    getRandomStep(min: number, max: number, step: number): number {
+        const range = (max - min) / step;
+        const randomStep = Math.floor(Math.random() * (range + 1));
+        return min + randomStep * step;
     }
 }
 

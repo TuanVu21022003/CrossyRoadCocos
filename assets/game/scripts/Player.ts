@@ -84,7 +84,7 @@ export class Player extends Component {
             this.anim.jump(this.timeMove / 2)
             let pos = this.node.getPosition()
             pos = pos.clone().add(direction)
-            GameManager.Instance.cameraFollow.followPlayer(pos)
+            GameManager.Instance.cameraFollow.followPlayer(pos, this.directionType)
             tween(this.node)
                 .to(
                     0.2,
@@ -115,9 +115,9 @@ export class Player extends Component {
         let startPos = this.node.getPosition().add(direction).add(new Vec3(0, 20, 0))
         // Biến chứa kết quả của raycast
 
-        let ray = new geometry.Ray(startPos.x, startPos.y, startPos.z, 0, -20, 0);
+        let ray = new geometry.Ray(startPos.x, startPos.y, startPos.z, 0, -50, 0);
         // Thực hiện raycast
-        if (PhysicsSystem.instance.raycast(ray, 0xffffffff, 20, true)) {
+        if (PhysicsSystem.instance.raycast(ray, 0xffffffff, 50, true)) {
             let results = PhysicsSystem.instance.raycastResults;
             let result = results[0]
             let typeItem = result.collider.node.getComponent(ItemMapBase).typeItemMap

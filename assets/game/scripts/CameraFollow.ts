@@ -1,4 +1,5 @@
-import { _decorator, CCFloat, Component, Node, tween, Vec3 } from 'cc';
+import { _decorator, CCFloat, Component, Input, input, Node, tween, Vec3 } from 'cc';
+import { DirectionType } from './Player';
 const { ccclass, property } = _decorator;
 
 @ccclass('CameraFollow')
@@ -8,24 +9,35 @@ export class CameraFollow extends Component {
 
     private offSet : Vec3;
 
+    private isMove : boolean = false;
+
     onInit(posPlayer: Vec3) {
         this.offSet = this.node.getPosition().clone().subtract(posPlayer)
+        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
-    followPlayer(posPlayer : Vec3) {
-        if(posPlayer.z > this.node.getPosition().clone().subtract(this.offSet).z) {
-            tween(this.node)
-            .to(
-                2, 
-                { position: posPlayer.clone().add(this.offSet)},
-            )
-            .start()
+    onTouchEnd() {
+        this.isMove = true;
+        input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+    }
 
+    followPlayer(posPlayer : Vec3, directionType : DirectionType) {
+        if(posPlayer.z < this.node.getPosition().clone().subtract(this.offSet).z || directionType === DirectionType.DOWN) {
+            return
         }
+        tween(this.node)
+        .to(
+            1.5, 
+            { position: posPlayer.clone().add(this.offSet)},
+        )
+        .start()
     }
 
     update(dt : number) {
-        // this.move(dt)
+        if(this.isMove) {
+
+            this.move(dt)
+        }
     }
 
     move(dt : number) {

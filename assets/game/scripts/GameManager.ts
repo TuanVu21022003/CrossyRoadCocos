@@ -15,7 +15,7 @@ export class GameManager extends Component {
     cameraFollow : CameraFollow
 
     @property(Prefab)
-    grassLinePrefab: Prefab
+    listLinePrefab: Prefab[] = []
 
     protected onLoad(): void {
         if (GameManager.Instance == null) {
@@ -32,13 +32,19 @@ export class GameManager extends Component {
     }
 
     generateLine() {
-        for(var i = -4; i <= 44; i+=2) {
-            let lineNode = instantiate(this.grassLinePrefab)
+        let count = 0;
+        for(var i = -8; i <= 56; i+=2) {
+            let baseLinePrefab = this.getRandomElement<Prefab>(this.listLinePrefab)
+            let lineNode = instantiate(baseLinePrefab)
             lineNode.parent = this.node.parent
             lineNode.setPosition(new Vec3(0, 0, i))
             let line = lineNode.getComponent(BaseLine)
-            line.onInit()
+            line.onInit(i)
         }
+    }
+    getRandomElement<T>(list: T[]): T {
+        const randomIndex = Math.floor(Math.random() * list.length);
+        return list[randomIndex];
     }
 }
 

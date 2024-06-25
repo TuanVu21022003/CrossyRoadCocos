@@ -2,12 +2,12 @@
   "ver": "1.1.50",
   "importer": "prefab",
   "imported": true,
-  "uuid": "9f7b19f0-59e4-41a0-a096-0a41b7d0e431",
+  "uuid": "a2b9651b-d055-49dc-b2c5-52a771d7f54a",
   "files": [
     ".json"
   ],
   "subMetas": {},
   "userData": {
-    "syncNodeName": "log"
+    "syncNodeName": "Road"
   }
 }
