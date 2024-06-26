@@ -1,11 +1,18 @@
 import { _decorator, CCFloat, Component, Input, input, Node, tween, Vec3 } from 'cc';
 import { DirectionType } from './Player';
+import { GameManager } from './GameManager';
 const { ccclass, property } = _decorator;
 
 @ccclass('CameraFollow')
 export class CameraFollow extends Component {
     @property(CCFloat)
     speed : number = 1
+
+    @property(CCFloat)
+    distanceDie : number = 1
+
+    @property(CCFloat)
+    distanceHandleLine : number = 5
 
     private offSet : Vec3;
 
@@ -27,7 +34,7 @@ export class CameraFollow extends Component {
         }
         tween(this.node)
         .to(
-            1.5, 
+            1, 
             { position: posPlayer.clone().add(this.offSet)},
         )
         .start()
@@ -35,8 +42,9 @@ export class CameraFollow extends Component {
 
     update(dt : number) {
         if(this.isMove) {
-
+            this.checkDiePlayer()
             this.move(dt)
+            this.checkHandleLine()
         }
     }
 
@@ -44,6 +52,29 @@ export class CameraFollow extends Component {
         let pos = this.node.getPosition();
         pos = pos.add(new Vec3(0, 0, this.speed * dt))
         this.node.setPosition(pos)
+    }
+
+    checkDiePlayer() {
+        if(!GameManager.Instance.player.getIsDie()) {
+            let posDie = this.node.getPosition().clone().subtract(this.offSet).z - this.distanceDie
+            if(posDie > GameManager.Instance.player.getPos().z) {
+                console.log("NHAN VAT DA DIE")
+                GameManager.Instance.player.setIsDie(true)
+                this.isMove = false
+            }
+
+        }
+    }
+
+    checkHandleLine() {
+        let posHandle = this.node.getPosition().clone().subtract(this.offSet).z - this.distanceHandleLine
+        let line = GameManager.Instance.firstLine
+        if(line != null) {
+
+            if(posHandle > line.getPos().z) {
+                GameManager.Instance.onHandleLine()
+            }
+        }
     }
 }
 

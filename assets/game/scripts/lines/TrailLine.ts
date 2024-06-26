@@ -18,8 +18,8 @@ export class TrailLine extends BaseLine {
     @property(CCFloat)
     durationSpawn: number
 
-    private direction : boolean
-    private lightWawn : LightWarn
+    private direction: boolean
+    private lightWawn: LightWarn
 
     onInit(index: number): void {
         super.onInit(index);
@@ -32,7 +32,7 @@ export class TrailLine extends BaseLine {
 
         let lightWawnNode = instantiate(this.lightWawnPrefab)
         lightWawnNode.parent = this.node
-        lightWawnNode.setPosition(new Vec3(this.getRandomOddMinMax(-7,7), 0, -0.8))
+        lightWawnNode.setPosition(new Vec3(this.getRandomOddMinMax(-7, 7), 0, -0.8))
 
         this.lightWawn = lightWawnNode.getComponent(LightWarn)
         this.lightWawn.onInit()
@@ -42,7 +42,7 @@ export class TrailLine extends BaseLine {
         setTimeout(() => {
             this.schedule(this.spawnPlatform, this.durationSpawn)
 
-        }, this.getRandomStep(1,2,0.4) * 1000)
+        }, this.getRandomStep(1, 2, 0.4) * 1000)
     }
 
     spawnPlatform() {
@@ -50,18 +50,21 @@ export class TrailLine extends BaseLine {
         let platformNode = instantiate(platformPrefab)
         platformNode.parent = this.node
         let platform = platformNode.getComponent(Vehical)
-        setTimeout(() => {
-            if(this.direction) {
+        if (this.direction) {
 
-                platform.onInit(new Vec3(-23, 0, 0), 1)
-            }
-            else {
-                platform.onInit(new Vec3(33, 0, 0), -1)
-            }
-            this.lightWawn.handleWarn()
-        }, this.getRandomStep(1,2,0.3) * 1000)
+            platform.onInit(new Vec3(-23, 0, 0), 1)
+        }
+        else {
+            platform.onInit(new Vec3(33, 0, 0), -1)
+        }
+        this.lightWawn.handleWarn()
     }
-    
+
+    destroyLine(): void {
+        this.unschedule(this.spawnPlatform)
+        super.destroyLine()
+    }
+
 }
 
 

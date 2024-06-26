@@ -26,6 +26,8 @@ export class Player extends Component {
     @property(CCFloat)
     timeMove: number = 0.2
 
+    private isDie : boolean = false
+
     private angleChicken: number = 0
     private directionType: DirectionType = DirectionType.UP
 
@@ -127,6 +129,14 @@ export class Player extends Component {
             console.log('No hit');
         }
         return null
+    }
+
+    getIsDie() {
+        return this.isDie
+    }
+
+    setIsDie(active: boolean) {
+        this.isDie = active
     }
 }
 

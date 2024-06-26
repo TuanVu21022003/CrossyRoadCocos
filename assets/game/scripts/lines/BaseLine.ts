@@ -1,10 +1,16 @@
-import { _decorator, Component, instantiate, Node, Prefab, Vec3 } from 'cc';
+import { _decorator, Component, Enum, instantiate, Node, Prefab, Vec3 } from 'cc';
 import { ItemMapBase, ItemMapType } from '../ItemMapBase';
+export enum LineType {
+    GRASSLINE = 0,
+    ROADLINE = 1,
+    TRAILLINE = 2,
+}
 const { ccclass, property } = _decorator;
 
 @ccclass('BaseLine')
 export class BaseLine extends Component {
-
+    @property({type: Enum(LineType)})
+    typeLine: LineType
 
     onInit(index : number) {
         this.generateGround(index)
@@ -54,6 +60,14 @@ export class BaseLine extends Component {
         const range = (max - min) / step;
         const randomStep = Math.floor(Math.random() * (range + 1));
         return min + randomStep * step;
+    }
+
+    destroyLine() {
+        this.node.active = false
+    }
+
+    getPos() {
+        return this.node.getPosition()
     }
 }
 

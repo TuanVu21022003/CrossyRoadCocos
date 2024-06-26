@@ -14,7 +14,7 @@ export class RoadLine extends BaseLine {
     @property(CCFloat)
     durationSpawn: number
 
-    private direction : boolean
+    private direction: boolean
 
     onInit(index: number): void {
         super.onInit(index);
@@ -30,7 +30,7 @@ export class RoadLine extends BaseLine {
         setTimeout(() => {
             this.schedule(this.spawnPlatform, this.durationSpawn)
 
-        }, this.getRandomStep(1,2,0.4) * 1000)
+        }, this.getRandomStep(0, 1, 0.1) * 1000)
     }
 
     spawnPlatform() {
@@ -38,15 +38,18 @@ export class RoadLine extends BaseLine {
         let platformNode = instantiate(platformPrefab)
         platformNode.parent = this.node
         let platform = platformNode.getComponent(Vehical)
-        setTimeout(() => {
-            if(this.direction) {
+        if (this.direction) {
 
-                platform.onInit(new Vec3(-23, 0, 0), 1)
-            }
-            else {
-                platform.onInit(new Vec3(33, 0, 0), -1)
-            }
-        }, this.getRandomStep(1,2,0.3) * 1000)
+            platform.onInit(new Vec3(-23, 0, 0), 1)
+        }
+        else {
+            platform.onInit(new Vec3(33, 0, 0), -1)
+        }
+    }
+
+    destroyLine(): void {
+        this.unschedule(this.spawnPlatform)
+        super.destroyLine()
     }
 }
 

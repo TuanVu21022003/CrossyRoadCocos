@@ -68,6 +68,7 @@
     "__prefab": {
       "__id__": 3
     },
+    "typeLine": 1,
     "groundPrefab": {
       "__uuid__": "a2b9651b-d055-49dc-b2c5-52a771d7f54a",
       "__expectedType__": "cc.Prefab"
