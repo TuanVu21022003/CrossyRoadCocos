@@ -15,6 +15,12 @@ export class BaseLine extends Component {
 
     protected ground : Node = null
 
+    protected durationSpawn: number
+
+    protected direction: boolean
+    protected speed : number
+    protected durationVehicalDestroy : number
+
     onInit(index : number) {
         this.generateGround(index)
         this.generatePlatform(index)

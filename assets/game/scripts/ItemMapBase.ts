@@ -5,6 +5,7 @@ export enum ItemMapType {
     GROUND = 0,
     BARRIER = 1,
     DIE = 2,
+    WOOD = 3
 }
 
 @ccclass('ItemMapBase')

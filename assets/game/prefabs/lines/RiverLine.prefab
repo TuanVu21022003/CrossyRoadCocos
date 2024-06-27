@@ -73,6 +73,16 @@
       "__uuid__": "40ec9260-9003-47e5-8556-4f230daece7d",
       "__expectedType__": "cc.Prefab"
     },
+    "listPlatform": [
+      {
+        "__uuid__": "addf4d1a-b879-420a-a3d1-df5f0576bee7",
+        "__expectedType__": "cc.Prefab"
+      },
+      {
+        "__uuid__": "4e3133db-8c01-42a2-8290-ef8c3a41abbe",
+        "__expectedType__": "cc.Prefab"
+      }
+    ],
     "_id": ""
   },
   {

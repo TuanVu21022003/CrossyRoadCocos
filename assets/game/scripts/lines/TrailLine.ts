@@ -15,14 +15,14 @@ export class TrailLine extends BaseLine {
     @property(Prefab)
     listPlatform: Prefab[] = []
 
-    durationSpawn: number
-
-    private direction: boolean
     private lightWawn: LightWarn = null
+    
     onInit(index: number): void {
         super.onInit(index);
         this.direction = this.getRamdomTrueFalse()
-        this.durationSpawn = this.getRandomStep(3, 6, 0.3)
+        this.durationSpawn = this.getRandomStep(7, 10, 0.3)
+        this.speed = this.getRandomStep(20, 25, 0.3)
+        this.durationVehicalDestroy = this.getRandomStep(3, 4, 0.1)
     }
 
     generateGround(index) {
@@ -35,7 +35,7 @@ export class TrailLine extends BaseLine {
         if (this.lightWawn == null) {
             let lightWawnNode = instantiate(this.lightWawnPrefab)
             lightWawnNode.parent = this.node
-            lightWawnNode.setPosition(new Vec3(this.getRandomOddMinMax(-7, 7), 0, -0.8))
+            lightWawnNode.setPosition(new Vec3(this.getRandomOddMinMax(-5, 5), 0, -0.8))
 
             this.lightWawn = lightWawnNode.getComponent(LightWarn)
             this.lightWawn.onInit()
@@ -56,10 +56,10 @@ export class TrailLine extends BaseLine {
         let platform = platformNode.getComponent(Vehical)
         if (this.direction) {
 
-            platform.onInit(new Vec3(-23, 0, 0), 1, this.getRandomStep(20, 25, 0.3), this.getRandomStep(3, 4, 0.1))
+            platform.onInit(new Vec3(-15, 0, 0), 1, this.speed, this.durationVehicalDestroy)
         }
         else {
-            platform.onInit(new Vec3(33, 0, 0), -1, this.getRandomStep(20, 25, 0.3), this.getRandomStep(3, 4, 0.1))
+            platform.onInit(new Vec3(30, 0, 0), -1, this.speed, this.durationVehicalDestroy)
         }
         this.lightWawn.handleWarn()
     }

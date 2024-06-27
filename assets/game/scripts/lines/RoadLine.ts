@@ -11,14 +11,13 @@ export class RoadLine extends BaseLine {
     @property(Prefab)
     listPlatform: Prefab[] = []
 
-    @property(CCFloat)
-    durationSpawn: number
-
-    private direction: boolean
 
     onInit(index: number): void {
         super.onInit(index);
         this.direction = this.getRamdomTrueFalse()
+        this.durationSpawn = this.getRandomStep(3, 6, 0.3)
+        this.speed = this.getRandomStep(5, 7, 0.3)
+        this.durationVehicalDestroy = this.getRandomStep(10, 12, 0.3)
     }
 
     generateGround(index) {
@@ -43,10 +42,10 @@ export class RoadLine extends BaseLine {
         let platform = platformNode.getComponent(Vehical)
         if (this.direction) {
 
-            platform.onInit(new Vec3(-23, 0, 0), 1, this.getRandomStep(5, 7, 0.3), this.getRandomStep(10, 12, 0.3))
+            platform.onInit(new Vec3(-15, 0, 0), 1, this.speed , this.durationVehicalDestroy)
         }
         else {
-            platform.onInit(new Vec3(33, 0, 0), -1, this.getRandomStep(5, 7, 0.3), this.getRandomStep(10, 12, 0.3))
+            platform.onInit(new Vec3(30, 0, 0), -1, this.speed , this.durationVehicalDestroy)
         }
     }
 

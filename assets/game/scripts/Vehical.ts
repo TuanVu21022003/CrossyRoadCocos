@@ -1,4 +1,4 @@
-import { _decorator, CCFloat, Component, Node, Vec3 } from 'cc';
+import { _decorator, CCFloat, Component, Node, tween, Vec3 } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('Vehical')
@@ -17,20 +17,22 @@ export class Vehical extends Component {
         this.duration = duration
         this.scheduleOnce(this.deActiveVehical, this.duration)
         this.node.setPosition(posStart)
-        this.speed *= horizontal
+        let posEnd = posStart.clone().add(new Vec3(45, 0 ,0))
         if(horizontal === -1) {
+            posEnd = posStart.clone().subtract(new Vec3(45, 0 ,0))
             this.node.setRotationFromEuler(new Vec3(0, 180 ,0))
         }
         this.isMove = true
-    }
-
-    protected update(dt: number): void {
-        if(this.isMove) {
-
-            let pos = this.node.getPosition();
-            pos = pos.add(new Vec3(this.speed * dt, 0, 0))
-            this.node.setPosition(pos)
-        }
+        
+        tween(this.node)
+                .to(
+                    50 / this.speed,
+                    { position: posEnd },
+                )
+                .call(() => {
+                    this.deActiveVehical()
+                })
+                .start()
     }
 
     deActiveVehical() {

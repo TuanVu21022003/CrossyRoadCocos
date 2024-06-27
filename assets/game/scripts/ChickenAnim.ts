@@ -12,9 +12,13 @@ export class ChickenAnim extends Component {
     private startPos : Vec3
     private highPos: Vec3
 
+    protected onLoad(): void {
+        this.startPos = this.node.getPosition()
+    }
+
 
     setJump() {
-        this.startPos = this.node.getPosition()
+        this.node.setPosition(this.startPos)
         this.highPos = this.startPos.clone().add(new Vec3(0, this.highJump, 0))
     }
 
