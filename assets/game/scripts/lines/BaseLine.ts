@@ -4,6 +4,7 @@ export enum LineType {
     GRASSLINE = 0,
     ROADLINE = 1,
     TRAILLINE = 2,
+    RIVERLINE = 3,
 }
 const { ccclass, property } = _decorator;
 

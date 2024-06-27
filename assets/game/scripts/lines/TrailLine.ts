@@ -19,7 +19,7 @@ export class TrailLine extends BaseLine {
     durationSpawn: number
 
     private direction: boolean
-    private lightWawn: LightWarn
+    private lightWawn: LightWarn = null
 
     onInit(index: number): void {
         super.onInit(index);
@@ -30,12 +30,14 @@ export class TrailLine extends BaseLine {
         let ground = instantiate(this.groundPrefab)
         ground.parent = this.node
 
-        let lightWawnNode = instantiate(this.lightWawnPrefab)
-        lightWawnNode.parent = this.node
-        lightWawnNode.setPosition(new Vec3(this.getRandomOddMinMax(-7, 7), 0, -0.8))
+        if (this.lightWawn == null) {
+            let lightWawnNode = instantiate(this.lightWawnPrefab)
+            lightWawnNode.parent = this.node
+            lightWawnNode.setPosition(new Vec3(this.getRandomOddMinMax(-7, 7), 0, -0.8))
 
-        this.lightWawn = lightWawnNode.getComponent(LightWarn)
-        this.lightWawn.onInit()
+            this.lightWawn = lightWawnNode.getComponent(LightWarn)
+            this.lightWawn.onInit()
+        }
     }
 
     generatePlatform(index: any): void {

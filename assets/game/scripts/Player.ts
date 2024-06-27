@@ -2,6 +2,8 @@ import { _decorator, CCFloat, ColliderComponent, Component, easing, find, geomet
 import { ChickenAnim } from './ChickenAnim';
 import { GameManager } from './GameManager';
 import { ItemMapBase, ItemMapType } from './ItemMapBase';
+import { UIManager } from './UI/UIManager';
+import { UIFail } from './UI/UIFail';
 const { ccclass, property } = _decorator;
 
 export enum DirectionType {
@@ -26,10 +28,12 @@ export class Player extends Component {
     @property(CCFloat)
     timeMove: number = 0.2
 
-    private isDie : boolean = false
+    private isDie: boolean = false
 
     private angleChicken: number = 0
     private directionType: DirectionType = DirectionType.UP
+    private level: number = 0
+    private posSave: number = 0
 
     protected onLoad(): void {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
@@ -41,12 +45,11 @@ export class Player extends Component {
         collider.on('onTriggerEnter', this.onTriggerEnter, this);
     }
 
-    update(deltaTime: number) {
-
-    }
-
     onTriggerEnter(event) {
-        console.log(event.otherCollider.node.name)
+        let itemMap: ItemMapBase = event.otherCollider.node.getComponent(ItemMapBase)
+        if (itemMap.typeItemMap === ItemMapType.DIE) {
+            GameManager.Instance.diePlayer()
+        }
     }
 
     onTouchStart(event) {
@@ -92,6 +95,12 @@ export class Player extends Component {
                     0.2,
                     { position: pos },
                 )
+                .call(() => {
+                    if (typeItem != null) {
+                        console.log(ItemMapType[typeItem])
+                    }
+                    this.updateLevel()
+                })
                 .start()
 
         }
@@ -101,7 +110,7 @@ export class Player extends Component {
     rotate(angle: number) {
         this.node.setRotationFromEuler(new Vec3(0, angle, 0))
     }
-    
+
 
     setDirection(direction: Vec3, angle: number, directionType: DirectionType) {
         this.direction = direction;
@@ -123,12 +132,26 @@ export class Player extends Component {
             let results = PhysicsSystem.instance.raycastResults;
             let result = results[0]
             let typeItem = result.collider.node.getComponent(ItemMapBase).typeItemMap
-            console.log(ItemMapType[typeItem])
             return typeItem
-        } else {
-            console.log('No hit');
         }
         return null
+    }
+
+    updateLevel() {
+        if (this.directionType === DirectionType.UP) {
+            this.posSave += 1;
+            if (this.posSave > this.level) {
+                this.level += 1;
+                setTimeout(() => {
+
+                    GameManager.Instance.onHandleLine()
+                }, 1000)
+            }
+        }
+        else if (this.directionType === DirectionType.DOWN) {
+            this.posSave -= 1;
+        }
+        // console.log("POSSAVE: " + this.posSave + "--->" + "LEVEL " + this.level)
     }
 
     getIsDie() {
@@ -137,6 +160,25 @@ export class Player extends Component {
 
     setIsDie(active: boolean) {
         this.isDie = active
+    }
+
+    reset() {
+        this.activeController(true)
+        this.node.setPosition(0, 1, 0)
+        this.level = 0;
+        this.posSave = 0;
+        this.isDie = false;
+    }
+
+    activeController(active) {
+        if (active) {
+            input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
+            input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+        }
+        else {
+            input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
+            input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+        }
     }
 }
 

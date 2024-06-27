@@ -44,7 +44,7 @@ export class CameraFollow extends Component {
         if(this.isMove) {
             this.checkDiePlayer()
             this.move(dt)
-            this.checkHandleLine()
+            // this.checkHandleLine()
         }
     }
 
@@ -60,6 +60,7 @@ export class CameraFollow extends Component {
             if(posDie > GameManager.Instance.player.getPos().z) {
                 console.log("NHAN VAT DA DIE")
                 GameManager.Instance.player.setIsDie(true)
+                GameManager.Instance.diePlayer()
                 this.isMove = false
             }
 
@@ -75,6 +76,16 @@ export class CameraFollow extends Component {
                 GameManager.Instance.onHandleLine()
             }
         }
+    }
+
+    reset() {
+        this.node.setPosition(new Vec3(0, 1, 0).add(this.offSet))
+        this.isMove = false;
+        input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
+    }
+
+    setIsMove(active) {
+        this.isMove = active
     }
 }
 

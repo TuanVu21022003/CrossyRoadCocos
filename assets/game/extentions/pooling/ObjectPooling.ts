@@ -29,7 +29,6 @@ export class ObjectPooling extends Component {
             if(g.active) {
                 continue;
             }
-            console.log("SINH LAI")
             return g
         }
 
@@ -38,6 +37,14 @@ export class ObjectPooling extends Component {
         itemPool.push(g2)
         this.poolObject.set(key, itemPool)
         return g2
+    }
+
+    closeAll() {
+        for(var [key, value] of this.poolObject) {
+            for(var tmp of value) {
+                tmp.active = false
+            }
+        }
     }
 }
 

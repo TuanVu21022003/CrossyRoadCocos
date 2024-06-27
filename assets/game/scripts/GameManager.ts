@@ -3,6 +3,8 @@ import { Player } from './Player';
 import { CameraFollow } from './CameraFollow';
 import { BaseLine, LineType } from './lines/BaseLine';
 import { ObjectPooling } from '../extentions/pooling/ObjectPooling';
+import { UIManager } from './UI/UIManager';
+import { UIFail } from './UI/UIFail';
 const { ccclass, property } = _decorator;
 
 
@@ -37,7 +39,24 @@ export class GameManager extends Component {
     }
 
     start() {
-        this.generateLineInit()
+        
+    }
+
+    onInit() {
+        this.listLineGenerated = new Array<BaseLine>()
+        this.cameraFollow.reset()
+        this.indexSpawn = -8
+        ObjectPooling.Instance.closeAll()
+        this.player.reset()
+        setTimeout(() => {
+
+            this.generateLineInit()
+        }, 0)
+    }
+    diePlayer() {
+        UIManager.Instance.openUI(UIFail)
+        this.cameraFollow.setIsMove(false)
+        this.player.activeController(false)
     }
 
     generateLineInit() {
@@ -57,6 +76,7 @@ export class GameManager extends Component {
     }
 
     onHandleLine() {
+        // console.log("OKE THAY DOI")
         this.removeLine()
         this.addLine(this.selectLine())
     }
