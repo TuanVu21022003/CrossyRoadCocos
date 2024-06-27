@@ -3,18 +3,18 @@ const { ccclass, property } = _decorator;
 
 @ccclass('Vehical')
 export class Vehical extends Component {
-    @property(CCFloat)
-    speed: number
+    speed: number = 0
 
-    @property(CCFloat) 
-    duration: number
+    duration: number = 0
 
     private isMove: boolean = false
 
     protected start(): void {
     }
     
-    onInit(posStart: Vec3, horizontal : number) {
+    onInit(posStart: Vec3, horizontal : number, speed, duration) {
+        this.speed = speed
+        this.duration = duration
         this.scheduleOnce(this.deActiveVehical, this.duration)
         this.node.setPosition(posStart)
         this.speed *= horizontal

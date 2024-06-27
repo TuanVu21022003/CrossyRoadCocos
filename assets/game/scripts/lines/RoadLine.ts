@@ -22,8 +22,11 @@ export class RoadLine extends BaseLine {
     }
 
     generateGround(index) {
-        let ground = instantiate(this.groundPrefab)
-        ground.parent = this.node
+        if(this.ground == null) {
+
+            this.ground = instantiate(this.groundPrefab)
+            this.ground.parent = this.node
+        }
     }
 
     generatePlatform(index: any): void {
@@ -40,10 +43,10 @@ export class RoadLine extends BaseLine {
         let platform = platformNode.getComponent(Vehical)
         if (this.direction) {
 
-            platform.onInit(new Vec3(-23, 0, 0), 1)
+            platform.onInit(new Vec3(-23, 0, 0), 1, this.getRandomStep(5, 7, 0.3), this.getRandomStep(10, 12, 0.3))
         }
         else {
-            platform.onInit(new Vec3(33, 0, 0), -1)
+            platform.onInit(new Vec3(33, 0, 0), -1, this.getRandomStep(5, 7, 0.3), this.getRandomStep(10, 12, 0.3))
         }
     }
 

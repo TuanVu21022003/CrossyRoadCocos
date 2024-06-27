@@ -24,7 +24,7 @@ export class GameManager extends Component {
 
     private saveLineGenerated : [LineType, number] = [LineType.GRASSLINE, 1]
     private listLineGenerated : Array<BaseLine> = new Array<BaseLine>()
-    private indexSpawn : number = -8
+    private indexSpawn : number = -10
 
     firstLine : BaseLine
 
@@ -45,13 +45,10 @@ export class GameManager extends Component {
     onInit() {
         this.listLineGenerated = new Array<BaseLine>()
         this.cameraFollow.reset()
-        this.indexSpawn = -8
+        this.indexSpawn = -10
         ObjectPooling.Instance.closeAll()
         this.player.reset()
-        setTimeout(() => {
-
-            this.generateLineInit()
-        }, 0)
+        this.generateLineInit()
     }
     diePlayer() {
         UIManager.Instance.openUI(UIFail)

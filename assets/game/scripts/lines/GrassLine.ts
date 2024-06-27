@@ -28,8 +28,8 @@ export class GrassLine extends BaseLine {
         else {
             groundPrefab = this.grass2
         }
-        let ground = instantiate(groundPrefab)
-        ground.parent = this.node
+        this.ground = instantiate(groundPrefab)
+        this.ground.parent = this.node
     }
 
     generatePlatform(index) {
@@ -81,7 +81,9 @@ export class GrassLine extends BaseLine {
     }
 
     destroyLine(): void {
+        this.ground.destroy()
         this.removePlatform()
+
         super.destroyLine()
     }
 

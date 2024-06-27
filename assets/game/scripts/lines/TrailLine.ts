@@ -15,20 +15,22 @@ export class TrailLine extends BaseLine {
     @property(Prefab)
     listPlatform: Prefab[] = []
 
-    @property(CCFloat)
     durationSpawn: number
 
     private direction: boolean
     private lightWawn: LightWarn = null
-
     onInit(index: number): void {
         super.onInit(index);
         this.direction = this.getRamdomTrueFalse()
+        this.durationSpawn = this.getRandomStep(3, 6, 0.3)
     }
 
     generateGround(index) {
-        let ground = instantiate(this.groundPrefab)
-        ground.parent = this.node
+        if(this.ground == null) {
+
+            this.ground = instantiate(this.groundPrefab)
+            this.ground.parent = this.node
+        }
 
         if (this.lightWawn == null) {
             let lightWawnNode = instantiate(this.lightWawnPrefab)
@@ -54,10 +56,10 @@ export class TrailLine extends BaseLine {
         let platform = platformNode.getComponent(Vehical)
         if (this.direction) {
 
-            platform.onInit(new Vec3(-23, 0, 0), 1)
+            platform.onInit(new Vec3(-23, 0, 0), 1, this.getRandomStep(20, 25, 0.3), this.getRandomStep(3, 4, 0.1))
         }
         else {
-            platform.onInit(new Vec3(33, 0, 0), -1)
+            platform.onInit(new Vec3(33, 0, 0), -1, this.getRandomStep(20, 25, 0.3), this.getRandomStep(3, 4, 0.1))
         }
         this.lightWawn.handleWarn()
     }

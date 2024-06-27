@@ -8,8 +8,11 @@ export class RiverLine extends BaseLine {
     groundPrefab: Prefab
 
     generateGround(index) {
-        let ground = instantiate(this.groundPrefab)
-        ground.parent = this.node
+        if(this.ground == null) {
+
+            this.ground = instantiate(this.groundPrefab)
+            this.ground.parent = this.node
+        }
     }
 }
 
