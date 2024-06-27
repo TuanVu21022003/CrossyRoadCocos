@@ -13,7 +13,7 @@ export class BaseLine extends Component {
     @property({type: Enum(LineType)})
     typeLine: LineType
 
-    protected ground = null
+    protected ground : Node = null
 
     onInit(index : number) {
         this.generateGround(index)

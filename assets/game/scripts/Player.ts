@@ -142,7 +142,10 @@ export class Player extends Component {
             this.posSave += 1;
             if (this.posSave > this.level) {
                 this.level += 1;
-                GameManager.Instance.onHandleLine()
+                setTimeout(() => {
+
+                    GameManager.Instance.onHandleLine()
+                }, 1000)
             }
         }
         else if (this.directionType === DirectionType.DOWN) {

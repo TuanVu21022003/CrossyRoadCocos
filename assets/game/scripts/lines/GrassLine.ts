@@ -81,6 +81,7 @@ export class GrassLine extends BaseLine {
     }
 
     destroyLine(): void {
+        console.log(this.ground.name)
         this.ground.destroy()
         this.removePlatform()
 

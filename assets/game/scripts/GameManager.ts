@@ -43,10 +43,13 @@ export class GameManager extends Component {
     }
 
     onInit() {
-        this.listLineGenerated = new Array<BaseLine>()
         this.cameraFollow.reset()
+        while(this.listLineGenerated.length > 0) {
+            let line = this.listLineGenerated[0];
+            line.destroyLine();
+            this.listLineGenerated.shift()
+        }
         this.indexSpawn = -10
-        ObjectPooling.Instance.closeAll()
         this.player.reset()
         this.generateLineInit()
     }
