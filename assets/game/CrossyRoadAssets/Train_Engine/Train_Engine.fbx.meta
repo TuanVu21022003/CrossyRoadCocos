@@ -1,0 +1,173 @@
+{
+  "ver": "2.3.12",
+  "importer": "fbx",
+  "imported": true,
+  "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f",
+  "files": [],
+  "subMetas": {
+    "33532": {
+      "importer": "gltf-mesh",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@33532",
+      "displayName": "",
+      "id": "33532",
+      "name": "Cylinder.007.mesh",
+      "userData": {
+        "gltfIndex": 3,
+        "triangleCount": 760
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "1550f": {
+      "importer": "gltf-mesh",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@1550f",
+      "displayName": "",
+      "id": "1550f",
+      "name": "Cylinder.010.mesh",
+      "userData": {
+        "gltfIndex": 0,
+        "triangleCount": 760
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "0b568": {
+      "importer": "gltf-mesh",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@0b568",
+      "displayName": "",
+      "id": "0b568",
+      "name": "Cylinder.001.mesh",
+      "userData": {
+        "gltfIndex": 1,
+        "triangleCount": 760
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "c0364": {
+      "importer": "gltf-mesh",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@c0364",
+      "displayName": "",
+      "id": "c0364",
+      "name": "Cylinder.000.mesh",
+      "userData": {
+        "gltfIndex": 2,
+        "triangleCount": 760
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "a5f8b": {
+      "importer": "gltf-mesh",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@a5f8b",
+      "displayName": "",
+      "id": "a5f8b",
+      "name": "Plane.001.mesh",
+      "userData": {
+        "gltfIndex": 4,
+        "triangleCount": 1872
+      },
+      "ver": "1.1.1",
+      "imported": true,
+      "files": [
+        ".bin",
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "b4e6b": {
+      "importer": "gltf-material",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@b4e6b",
+      "displayName": "",
+      "id": "b4e6b",
+      "name": "Material.material",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "da6f0": {
+      "importer": "gltf-scene",
+      "uuid": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@da6f0",
+      "displayName": "",
+      "id": "da6f0",
+      "name": "Train_Engine.prefab",
+      "userData": {
+        "gltfIndex": 0
+      },
+      "ver": "1.0.14",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "imageMetas": [],
+    "fbx": {
+      "smartMaterialEnabled": true
+    },
+    "redirect": "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@da6f0",
+    "lods": {
+      "enable": false,
+      "hasBuiltinLOD": false,
+      "options": [
+        {
+          "screenRatio": 0.25,
+          "faceCount": 1
+        },
+        {
+          "screenRatio": 0.125,
+          "faceCount": 0.25
+        },
+        {
+          "screenRatio": 0.01,
+          "faceCount": 0.1
+        }
+      ]
+    },
+    "assetFinder": {
+      "meshes": [
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@1550f",
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@0b568",
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@c0364",
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@33532",
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@a5f8b"
+      ],
+      "skeletons": [],
+      "textures": [],
+      "materials": [
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@b4e6b"
+      ],
+      "scenes": [
+        "b1e98ef5-d38d-4ffa-a3d9-9039a685400f@da6f0"
+      ]
+    }
+  }
+}

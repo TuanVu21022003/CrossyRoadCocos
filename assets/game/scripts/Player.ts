@@ -4,6 +4,7 @@ import { GameManager } from './GameManager';
 import { ItemMapBase, ItemMapType } from './ItemMapBase';
 import { UIManager } from './UI/UIManager';
 import { UIFail } from './UI/UIFail';
+import { UIGamePlay } from './UI/UIGamePlay';
 const { ccclass, property } = _decorator;
 
 export enum DirectionType {
@@ -43,6 +44,7 @@ export class Player extends Component {
 
     private wood: Node = null
     private posCurrent: Vec3
+    private tweenCurrent: any
     collider : ColliderComponent
     protected onLoad(): void {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
@@ -58,9 +60,20 @@ export class Player extends Component {
         let itemMap: ItemMapBase = event.otherCollider.node.getComponent(ItemMapBase)
         if (itemMap.typeItemMap === ItemMapType.DIE) {
             GameManager.Instance.diePlayer()
+            if(this.tweenCurrent != null) {
+
+                this.tweenCurrent.stop();
+            }
+            this.tweenCurrent = null
         }
         if (itemMap.typeItemMap === ItemMapType.WOOD) {
             this.wood = itemMap.node
+            this.updateLevel()
+            if(this.tweenCurrent != null) {
+
+                this.tweenCurrent.stop();
+            }
+            this.tweenCurrent = null
         }
     }
 
@@ -103,6 +116,10 @@ export class Player extends Component {
         if (this.wood != null) {
             this.node.setPosition(this.wood.getWorldPosition().add(new Vec3(0, 0.8, 0)))
             this.posCurrent = this.node.getPosition()
+            GameManager.Instance.cameraFollow.setPos(this.posCurrent)
+            if(Math.abs(this.posCurrent.x) > 8 && !this.isDie) {
+                GameManager.Instance.diePlayer()
+            }
         }
     }
 
@@ -110,6 +127,7 @@ export class Player extends Component {
         let typeItem = this.checkMove(direction)
         if (typeItem !== ItemMapType.BARRIER) {
             this.anim.jump(this.timeMove / 2)
+            console.log("POSCURENT : " + this.posCurrent)
             let pos = this.posCurrent
             this.wood = null
             pos = pos.clone().add(direction)
@@ -121,8 +139,9 @@ export class Player extends Component {
                 pos = new Vec3((result[0]) * 2, pos.y, pos.z)
             }
             this.posCurrent = pos
+            console.log("POS : " + pos)
             GameManager.Instance.cameraFollow.followPlayer(pos, this.directionType)
-            tween(this.node)
+            this.tweenCurrent = tween(this.node)
                 .to(
                     this.timeMove,
                     { position: pos },
@@ -196,8 +215,9 @@ export class Player extends Component {
     updateLevel() {
         if (this.directionType === DirectionType.UP) {
             this.posSave += 1;
-            if (this.posSave > this.level) {
+            if (this.posSave > this.level && !this.isDie) {
                 this.level += 1;
+                UIManager.Instance.getUI(UIGamePlay).updateScore(this.level)
                 setTimeout(() => {
 
                     GameManager.Instance.onHandleLine()
@@ -239,6 +259,9 @@ export class Player extends Component {
             input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
             input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         }
+    }
+    getLevel() {
+        return this.level
     }
 }
 

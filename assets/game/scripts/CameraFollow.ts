@@ -18,6 +18,8 @@ export class CameraFollow extends Component {
 
     private isMove : boolean = false;
 
+    tweenCurrent : any
+
     onInit(posPlayer: Vec3) {
         this.offSet = this.node.getPosition().clone().subtract(posPlayer)
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
@@ -32,7 +34,7 @@ export class CameraFollow extends Component {
         if(posPlayer.z < this.node.getPosition().clone().subtract(this.offSet).z - 2 || directionType === DirectionType.DOWN) {
             return
         }
-        tween(this.node)
+        this.tweenCurrent = tween(this.node)
         .to(
             1, 
             { position: posPlayer.clone().add(this.offSet)},
@@ -86,6 +88,15 @@ export class CameraFollow extends Component {
 
     setIsMove(active) {
         this.isMove = active
+    }
+
+    setPos(pos) {
+        if(this.tweenCurrent != null) {
+
+            this.tweenCurrent.stop();
+        }
+        this.tweenCurrent = null
+        this.node.setPosition(pos.clone().add(this.offSet))
     }
 }
 

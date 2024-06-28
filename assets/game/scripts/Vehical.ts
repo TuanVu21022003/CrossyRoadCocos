@@ -15,9 +15,9 @@ export class Vehical extends Component {
         this.speed = speed
         this.duration = duration
         this.node.setPosition(posStart)
-        let posEnd = posStart.clone().add(new Vec3(45, 0 ,0))
+        let posEnd = posStart.clone().add(new Vec3(Math.abs(posStart.x) * 2, 0 ,0))
         if(horizontal === -1) {
-            posEnd = posStart.clone().subtract(new Vec3(45, 0 ,0))
+            posEnd = posStart.clone().subtract(new Vec3(Math.abs(posStart.x) * 2, 0 ,0))
             this.node.setRotationFromEuler(new Vec3(0, 180 ,0))
         }
         this.isMove = true

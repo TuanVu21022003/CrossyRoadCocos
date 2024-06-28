@@ -5,6 +5,7 @@ import { BaseLine, LineType } from './lines/BaseLine';
 import { ObjectPooling } from '../extentions/pooling/ObjectPooling';
 import { UIManager } from './UI/UIManager';
 import { UIFail } from './UI/UIFail';
+import { UIGamePlay } from './UI/UIGamePlay';
 const { ccclass, property } = _decorator;
 
 
@@ -43,6 +44,7 @@ export class GameManager extends Component {
     }
 
     onInit() {
+        UIManager.Instance.getUI(UIGamePlay).updateScore(0)
         this.cameraFollow.reset()
         while(this.listLineGenerated.length > 0) {
             let line = this.listLineGenerated[0];
@@ -54,13 +56,15 @@ export class GameManager extends Component {
         this.generateLineInit()
     }
     diePlayer() {
+        UIManager.Instance.getUI(UIFail).updateScore(this.player.getLevel())
         UIManager.Instance.openUI(UIFail)
         this.cameraFollow.setIsMove(false)
         this.player.activeController(false)
+        this.player.setIsDie(true)
     }
 
     generateLineInit() {
-        for(var i = this.indexSpawn; i <= 34; i+=2) {
+        for(var i = this.indexSpawn; i <= 46; i+=2) {
             let baseLinePrefab
             if(i <= 0) {
                 baseLinePrefab = this.listLinePrefab[0]

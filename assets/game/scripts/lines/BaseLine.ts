@@ -96,12 +96,19 @@ export class BaseLine extends Component {
         this.listPlatformCurrent.push(platformNode)
         platformNode.parent = this.node.parent
         let platform = platformNode.getComponent(Vehical)
-        if (this.direction) {
-
-            platform.onInit(new Vec3(-15, 0, this.index), 1, this.speed, this.durationVehicalDestroy)
+        let posStart : Vec3
+        if(this.index < 10) {
+            posStart = new Vec3(-10, 0, this.index)
         }
         else {
-            platform.onInit(new Vec3(30, 0, this.index), -1, this.speed, this.durationVehicalDestroy)
+            posStart = new Vec3(-30, 0, this.index)
+        }
+        if (this.direction) {
+
+            platform.onInit(posStart, 1, this.speed, this.durationVehicalDestroy)
+        }
+        else {
+            platform.onInit(new Vec3(posStart.x * -1, posStart.y, posStart.z), -1, this.speed, this.durationVehicalDestroy)
         }
     }
 

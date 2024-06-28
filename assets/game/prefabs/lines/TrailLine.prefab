@@ -69,6 +69,12 @@
       "__id__": 3
     },
     "typeLine": 2,
+    "listPlatform": [
+      {
+        "__uuid__": "dfe56c05-0c2b-4f7c-9c2d-2b9787c1ba76",
+        "__expectedType__": "cc.Prefab"
+      }
+    ],
     "groundPrefab": {
       "__uuid__": "9c681c42-fd47-480e-844d-88f588cbd288",
       "__expectedType__": "cc.Prefab"
@@ -77,13 +83,6 @@
       "__uuid__": "801b9e41-6086-4e61-9317-7e0ac11b2fad",
       "__expectedType__": "cc.Prefab"
     },
-    "listPlatform": [
-      {
-        "__uuid__": "439ce1f0-ae6d-461e-b8fb-5dd91d47e378",
-        "__expectedType__": "cc.Prefab"
-      }
-    ],
-    "durationSpawn": 6,
     "_id": ""
   },
   {

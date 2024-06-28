@@ -164,7 +164,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "swipeRange": 100,
+    "swipeRange": 50,
     "anim": {
       "__id__": 25
     },
@@ -208,7 +208,7 @@
       "__type__": "cc.Vec3",
       "x": 0,
       "y": 0.800000011920929,
-      "z": -1.652999997138977
+      "z": 0
     },
     "_lrot": {
       "__type__": "cc.Quat",
@@ -1062,7 +1062,7 @@
     },
     "_enabled": true,
     "__prefab": null,
-    "speed": 0.5,
+    "speed": 0.4,
     "distanceDie": 3,
     "distanceHandleLine": 10,
     "_id": "bdlWQDpc9O+q6LRfgo8umT"
