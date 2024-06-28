@@ -69,10 +69,6 @@
       "__id__": 3
     },
     "typeLine": 1,
-    "groundPrefab": {
-      "__uuid__": "a2b9651b-d055-49dc-b2c5-52a771d7f54a",
-      "__expectedType__": "cc.Prefab"
-    },
     "listPlatform": [
       {
         "__uuid__": "d6eb9882-acc1-4dcd-8a9f-6df7922b44de",
@@ -83,7 +79,10 @@
         "__expectedType__": "cc.Prefab"
       }
     ],
-    "durationSpawn": 4,
+    "groundPrefab": {
+      "__uuid__": "2fa5c1ac-5c25-44ae-88a9-3673b9c6dcd7",
+      "__expectedType__": "cc.Prefab"
+    },
     "_id": ""
   },
   {

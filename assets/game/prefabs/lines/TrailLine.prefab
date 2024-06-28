@@ -69,21 +69,20 @@
       "__id__": 3
     },
     "typeLine": 2,
-    "groundPrefab": {
-      "__uuid__": "9c681c42-fd47-480e-844d-88f588cbd288",
-      "__expectedType__": "cc.Prefab"
-    },
-    "lightWawnPrefab": {
-      "__uuid__": "801b9e41-6086-4e61-9317-7e0ac11b2fad",
-      "__expectedType__": "cc.Prefab"
-    },
     "listPlatform": [
       {
         "__uuid__": "439ce1f0-ae6d-461e-b8fb-5dd91d47e378",
         "__expectedType__": "cc.Prefab"
       }
     ],
-    "durationSpawn": 6,
+    "groundPrefab": {
+      "__uuid__": "904a818e-ff58-428c-ad01-41f7e17b7a4b",
+      "__expectedType__": "cc.Prefab"
+    },
+    "lightWawnPrefab": {
+      "__uuid__": "801b9e41-6086-4e61-9317-7e0ac11b2fad",
+      "__expectedType__": "cc.Prefab"
+    },
     "_id": ""
   },
   {
