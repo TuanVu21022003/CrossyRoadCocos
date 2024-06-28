@@ -1,5 +1,7 @@
 import { _decorator, Component, Enum, instantiate, Node, Prefab, Vec3 } from 'cc';
 import { ItemMapBase, ItemMapType } from '../ItemMapBase';
+import { Vehical } from '../Vehical';
+import { ObjectPooling } from '../../extentions/pooling/ObjectPooling';
 export enum LineType {
     GRASSLINE = 0,
     ROADLINE = 1,
@@ -13,6 +15,9 @@ export class BaseLine extends Component {
     @property({type: Enum(LineType)})
     typeLine: LineType
 
+    @property(Prefab)
+    listPlatform: Prefab[] = []
+
     protected ground : Node = null
 
     protected durationSpawn: number
@@ -20,8 +25,12 @@ export class BaseLine extends Component {
     protected direction: boolean
     protected speed : number
     protected durationVehicalDestroy : number
+    protected index : number
+
+    protected listPlatformCurrent: Array<Node> = new Array<Node>()
 
     onInit(index : number) {
+        this.index = index
         this.generateGround(index)
         this.generatePlatform(index)
     }
@@ -72,11 +81,36 @@ export class BaseLine extends Component {
     }
 
     destroyLine() {
+        this.removePlatform()
         this.node.active = false
     }
 
     getPos() {
         return this.node.getPosition()
+    }
+
+    spawnPlatform() {
+        let platformPrefab = this.getRandomElement<Prefab>(this.listPlatform)
+        let platformNode = ObjectPooling.Instance.GetObject(platformPrefab)
+        platformNode.active = true
+        this.listPlatformCurrent.push(platformNode)
+        platformNode.parent = this.node.parent
+        let platform = platformNode.getComponent(Vehical)
+        if (this.direction) {
+
+            platform.onInit(new Vec3(-15, 0, this.index), 1, this.speed, this.durationVehicalDestroy)
+        }
+        else {
+            platform.onInit(new Vec3(30, 0, this.index), -1, this.speed, this.durationVehicalDestroy)
+        }
+    }
+
+    removePlatform() {
+        while(this.listPlatformCurrent.length > 0) {
+            let platform = this.listPlatformCurrent[0];
+            platform.active = false
+            this.listPlatformCurrent.shift();
+        }
     }
 }
 

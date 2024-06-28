@@ -60,7 +60,7 @@ export class GameManager extends Component {
     }
 
     generateLineInit() {
-        for(var i = this.indexSpawn; i <= 70; i+=2) {
+        for(var i = this.indexSpawn; i <= 34; i+=2) {
             let baseLinePrefab
             if(i <= 0) {
                 baseLinePrefab = this.listLinePrefab[0]

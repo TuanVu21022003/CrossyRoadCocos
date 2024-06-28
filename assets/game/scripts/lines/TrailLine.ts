@@ -12,10 +12,8 @@ export class TrailLine extends BaseLine {
     @property(Prefab)
     lightWawnPrefab: Prefab
 
-    @property(Prefab)
-    listPlatform: Prefab[] = []
-
     private lightWawn: LightWarn = null
+
     
     onInit(index: number): void {
         super.onInit(index);
@@ -50,17 +48,7 @@ export class TrailLine extends BaseLine {
     }
 
     spawnPlatform() {
-        let platformPrefab = this.getRandomElement<Prefab>(this.listPlatform)
-        let platformNode = instantiate(platformPrefab)
-        platformNode.parent = this.node
-        let platform = platformNode.getComponent(Vehical)
-        if (this.direction) {
-
-            platform.onInit(new Vec3(-15, 0, 0), 1, this.speed, this.durationVehicalDestroy)
-        }
-        else {
-            platform.onInit(new Vec3(30, 0, 0), -1, this.speed, this.durationVehicalDestroy)
-        }
+        super.spawnPlatform()
         this.lightWawn.handleWarn()
     }
 

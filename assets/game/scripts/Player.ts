@@ -43,15 +43,15 @@ export class Player extends Component {
 
     private wood: Node = null
     private posCurrent: Vec3
-
+    collider : ColliderComponent
     protected onLoad(): void {
         input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     start() {
-        let collider = this.node.getComponent(ColliderComponent);
-        collider.on('onTriggerEnter', this.onTriggerEnter, this);
+        this.collider = this.node.getComponent(ColliderComponent);
+        
     }
 
     onTriggerEnter(event) {
@@ -230,10 +230,12 @@ export class Player extends Component {
 
     activeController(active) {
         if (active) {
+            this.collider.on('onTriggerEnter', this.onTriggerEnter, this);
             input.on(Input.EventType.TOUCH_START, this.onTouchStart, this);
             input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         }
         else {
+            this.collider.off('onTriggerEnter', this.onTriggerEnter, this);
             input.off(Input.EventType.TOUCH_START, this.onTouchStart, this);
             input.off(Input.EventType.TOUCH_END, this.onTouchEnd, this);
         }

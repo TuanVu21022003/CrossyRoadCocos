@@ -29,7 +29,7 @@ export class CameraFollow extends Component {
     }
 
     followPlayer(posPlayer : Vec3, directionType : DirectionType) {
-        if(posPlayer.z < this.node.getPosition().clone().subtract(this.offSet).z || directionType === DirectionType.DOWN) {
+        if(posPlayer.z < this.node.getPosition().clone().subtract(this.offSet).z - 2 || directionType === DirectionType.DOWN) {
             return
         }
         tween(this.node)

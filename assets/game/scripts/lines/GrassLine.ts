@@ -7,9 +7,6 @@ const { ccclass, property } = _decorator;
 export class GrassLine extends BaseLine {
 
     @property(Prefab)
-    listPlatform: Prefab[] = []
-
-    @property(Prefab)
     grass1: Prefab
 
     @property(Prefab)
@@ -18,7 +15,7 @@ export class GrassLine extends BaseLine {
     @property(CCInteger)
     countPlatform: number = 3
 
-    private listPlatformCurrent: Array<Node> = new Array<Node>()
+    
 
     generateGround(index) {
         let groundPrefab;
@@ -64,25 +61,19 @@ export class GrassLine extends BaseLine {
         }
     }
 
-    addPlatform(platformPrefab, index) {
+    addPlatform(platformPrefab, indexX) {
         let platform = ObjectPooling.Instance.GetObject(platformPrefab)
+        // let platform = instantiate(platformPrefab)
         platform.active = true
-        platform.parent = this.node
-        platform.setPosition(new Vec3(index, platform.getPosition().y, 0))
+        platform.parent = this.node.parent
+        platform.setPosition(new Vec3(indexX, platform.getPosition().y, this.index))
         this.listPlatformCurrent.push(platform)
     }
 
-    removePlatform() {
-        while(this.listPlatformCurrent.length > 0) {
-            let platform = this.listPlatformCurrent[0];
-            platform.active = false;
-            this.listPlatformCurrent.shift();
-        }
-    }
+    
 
     destroyLine(): void {
         this.ground.destroy()
-        this.removePlatform()
 
         super.destroyLine()
     }

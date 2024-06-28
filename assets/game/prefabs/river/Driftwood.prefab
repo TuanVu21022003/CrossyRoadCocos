@@ -10772,7 +10772,7 @@
     },
     "_size": {
       "__type__": "cc.Vec3",
-      "x": 0.082,
+      "x": 0.055,
       "y": 0.01,
       "z": 0.018
     },
@@ -10810,6 +10810,7 @@
       "__id__": 0
     },
     "fileId": "6aemG6X3lPOJsqhrSJZ7B1",
-    "instance": null
+    "instance": null,
+    "targetOverrides": null
   }
 ]

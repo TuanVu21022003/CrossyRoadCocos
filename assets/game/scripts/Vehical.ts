@@ -9,13 +9,11 @@ export class Vehical extends Component {
 
     private isMove: boolean = false
 
-    protected start(): void {
-    }
+    tweenCurrent : any
     
     onInit(posStart: Vec3, horizontal : number, speed, duration) {
         this.speed = speed
         this.duration = duration
-        this.scheduleOnce(this.deActiveVehical, this.duration)
         this.node.setPosition(posStart)
         let posEnd = posStart.clone().add(new Vec3(45, 0 ,0))
         if(horizontal === -1) {
@@ -24,19 +22,21 @@ export class Vehical extends Component {
         }
         this.isMove = true
         
-        tween(this.node)
+        this.tweenCurrent = tween(this.node)
                 .to(
                     50 / this.speed,
                     { position: posEnd },
                 )
                 .call(() => {
-                    this.deActiveVehical()
+                    this.node.active = false
                 })
                 .start()
     }
 
-    deActiveVehical() {
-        this.node.destroy()
+    protected onDisable(): void {
+        console.log("DA BI DISABLE")
+        this.tweenCurrent.stop()
+        this.tweenCurrent = null
     }
 }
 
