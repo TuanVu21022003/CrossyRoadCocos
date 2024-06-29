@@ -19,7 +19,7 @@ export class RiverLine extends BaseLine {
             this.direction = false
         }
         this.durationSpawn = this.getRandomStep(3, 5, 0.3)
-        this.speed = this.getRandomStep(4, 6, 0.1)
+        this.speed = this.getRandomStep(2, 3, 0.1)
         this.durationVehicalDestroy = this.getRandomStep(12, 14, 0.3)
     }
 

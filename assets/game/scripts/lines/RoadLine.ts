@@ -13,7 +13,7 @@ export class RoadLine extends BaseLine {
         super.onInit(index);
         this.direction = this.getRamdomTrueFalse()
         this.durationSpawn = this.getRandomStep(3, 6, 0.3)
-        this.speed = this.getRandomStep(5, 7, 0.3)
+        this.speed = this.getRandomStep(3, 6, 0.3)
         this.durationVehicalDestroy = this.getRandomStep(10, 12, 0.3)
     }
 

@@ -5,6 +5,7 @@ import { ItemMapBase, ItemMapType } from './ItemMapBase';
 import { UIManager } from './UI/UIManager';
 import { UIFail } from './UI/UIFail';
 import { UIGamePlay } from './UI/UIGamePlay';
+import { Vehical } from './Vehical';
 const { ccclass, property } = _decorator;
 
 export enum DirectionType {
@@ -36,6 +37,7 @@ export class Player extends Component {
     private direction: Vec3
 
     private isDie: boolean = false
+    private isWood: boolean = false
 
     private angleChicken: number = 0
     private directionType: DirectionType = DirectionType.UP
@@ -70,10 +72,17 @@ export class Player extends Component {
             this.wood = itemMap.node
             this.updateLevel()
             if(this.tweenCurrent != null) {
-
+                
                 this.tweenCurrent.stop();
             }
             this.tweenCurrent = null
+            tween(this.node).to(0.05, {position : this.wood.getWorldPosition().clone().add(new Vec3(0, 0.8, 0))}).call(() => {
+                this.isWood = true
+            }).start()
+            let parent = itemMap.node.parent.getComponent(Vehical)
+            let time = 1
+            console.log("POS1: " + this.posCurrent.x + "----> " + "POS2 : " + this.posCurrent.clone().add(new Vec3(parent.caculateDistance(time), 0, 0)).x)
+            GameManager.Instance.cameraFollow.followWood(this.posCurrent.clone().add(new Vec3(parent.caculateDistance(time), 0, 0)), time, parent.speed * parent.horizontal)
         }
     }
 
@@ -113,11 +122,10 @@ export class Player extends Component {
     }
 
     protected update(dt: number): void {
-        if (this.wood != null) {
+        if (this.isWood) {
             this.node.setPosition(this.wood.getWorldPosition().add(new Vec3(0, 0.8, 0)))
             this.posCurrent = this.node.getPosition()
-            GameManager.Instance.cameraFollow.setPos(this.posCurrent)
-            if(Math.abs(this.posCurrent.x) > 8 && !this.isDie) {
+            if(Math.abs(this.posCurrent.x) > 9 && !this.isDie) {
                 GameManager.Instance.diePlayer()
             }
         }
@@ -127,9 +135,12 @@ export class Player extends Component {
         let typeItem = this.checkMove(direction)
         if (typeItem !== ItemMapType.BARRIER) {
             this.anim.jump(this.timeMove / 2)
-            console.log("POSCURENT : " + this.posCurrent)
             let pos = this.posCurrent
             this.wood = null
+            this.isWood = false
+            GameManager.Instance.cameraFollow.setIsMove(true)
+            GameManager.Instance.cameraFollow.setIsWood(false)
+            
             pos = pos.clone().add(direction)
             let result = this.decimalRemainder(pos.x, 2)
             if (result[1] > 1) {
@@ -139,7 +150,6 @@ export class Player extends Component {
                 pos = new Vec3((result[0]) * 2, pos.y, pos.z)
             }
             this.posCurrent = pos
-            console.log("POS : " + pos)
             GameManager.Instance.cameraFollow.followPlayer(pos, this.directionType)
             this.tweenCurrent = tween(this.node)
                 .to(
@@ -218,10 +228,7 @@ export class Player extends Component {
             if (this.posSave > this.level && !this.isDie) {
                 this.level += 1;
                 UIManager.Instance.getUI(UIGamePlay).updateScore(this.level)
-                setTimeout(() => {
-
                     GameManager.Instance.onHandleLine()
-                }, 1000)
             }
         }
         else if (this.directionType === DirectionType.DOWN) {
@@ -236,16 +243,19 @@ export class Player extends Component {
 
     setIsDie(active: boolean) {
         this.isDie = active
+        this.node.active = !active
     }
 
     reset() {
+        this.node.active = true
         this.activeController(true)
         this.node.setPosition(0, 0.8, 0)
         this.posCurrent = this.node.getPosition()
         this.level = 0;
         this.posSave = 0;
-        this.isDie = false;
+        this.setIsDie(false)
         this.wood = null
+        this.node.setRotationFromEuler(new Vec3(0, 0, 0))
     }
 
     activeController(active) {

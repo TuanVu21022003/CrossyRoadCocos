@@ -1,4 +1,4 @@
-import { _decorator, Component, instantiate, Line, Node, Prefab, Vec3 } from 'cc';
+import { _decorator, Component, instantiate, Line, Node, ParticleSystem, Prefab, Vec3 } from 'cc';
 import { Player } from './Player';
 import { CameraFollow } from './CameraFollow';
 import { BaseLine, LineType } from './lines/BaseLine';
@@ -23,9 +23,13 @@ export class GameManager extends Component {
     @property(Prefab)
     listLinePrefab: Prefab[] = []
 
+    @property(Prefab)
+    particurPrefab : Prefab
+
     private saveLineGenerated : [LineType, number] = [LineType.GRASSLINE, 1]
     private listLineGenerated : Array<BaseLine> = new Array<BaseLine>()
-    private indexSpawn : number = -10
+    private indexStart = -16
+    private indexSpawn : number = this.indexStart
 
     firstLine : BaseLine
 
@@ -51,7 +55,7 @@ export class GameManager extends Component {
             line.destroyLine();
             this.listLineGenerated.shift()
         }
-        this.indexSpawn = -10
+        this.indexSpawn = this.indexStart
         this.player.reset()
         this.generateLineInit()
     }
@@ -61,6 +65,12 @@ export class GameManager extends Component {
         this.cameraFollow.setIsMove(false)
         this.player.activeController(false)
         this.player.setIsDie(true)
+        let particur : Node = instantiate(this.particurPrefab)
+        particur.parent = this.node
+        particur.setPosition(this.player.getPos())
+        setTimeout(() => {
+            particur.destroy()
+        }, 3000)
     }
 
     generateLineInit() {

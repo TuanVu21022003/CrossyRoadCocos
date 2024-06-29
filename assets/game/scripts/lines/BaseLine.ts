@@ -98,7 +98,10 @@ export class BaseLine extends Component {
         let platform = platformNode.getComponent(Vehical)
         let posStart : Vec3
         if(this.index < 10) {
-            posStart = new Vec3(-10, 0, this.index)
+            posStart = new Vec3(-14, 0, this.index)
+        }
+        else if(this.index < 20) {
+            posStart = new Vec3(-20, 0, this.index)
         }
         else {
             posStart = new Vec3(-30, 0, this.index)

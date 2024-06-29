@@ -14,9 +14,12 @@ export class CameraFollow extends Component {
     @property(CCFloat)
     distanceHandleLine : number = 5
 
+    speedWood : number = 1
+
     private offSet : Vec3;
 
     private isMove : boolean = false;
+    private isWood : boolean = false;
 
     tweenCurrent : any
 
@@ -31,6 +34,11 @@ export class CameraFollow extends Component {
     }
 
     followPlayer(posPlayer : Vec3, directionType : DirectionType) {
+        if(this.tweenCurrent != null) {
+
+            this.tweenCurrent.stop();
+        }
+        this.tweenCurrent = null
         if(posPlayer.z < this.node.getPosition().clone().subtract(this.offSet).z - 2 || directionType === DirectionType.DOWN) {
             return
         }
@@ -42,11 +50,37 @@ export class CameraFollow extends Component {
         .start()
     }
 
+    followWood(posPlayer : Vec3, time, speed) {
+        if(this.tweenCurrent != null) {
+
+            this.tweenCurrent.stop();
+        }
+        this.tweenCurrent = null
+        this.speedWood = speed
+        console.log(this.speedWood)
+        this.isMove = false
+        this.tweenCurrent = tween(this.node)
+        .to(
+            time, 
+            { position: posPlayer.clone().add(this.offSet)},
+        )
+        .call(() => {
+            this.isWood = true
+        })
+        .start()
+    }
+
     update(dt : number) {
         if(this.isMove) {
             this.checkDiePlayer()
             this.move(dt)
             // this.checkHandleLine()
+        }
+        if(this.isWood) {
+            console.log(this.isWood)
+            let pos = this.node.getPosition();
+            pos = pos.add(new Vec3(this.speedWood * dt, 0, 0))
+            this.node.setPosition(pos)
         }
     }
 
@@ -81,13 +115,19 @@ export class CameraFollow extends Component {
     }
 
     reset() {
-        this.node.setPosition(new Vec3(0, 1, 0).add(this.offSet))
+        tween(this.node).to(0.5, {position : new Vec3(0, 1, 0).add(this.offSet)}).start()
+        // this.node.setPosition(new Vec3(0, 1, 0).add(this.offSet))
         this.isMove = false;
+        this.isWood = false;
         input.on(Input.EventType.TOUCH_END, this.onTouchEnd, this);
     }
 
     setIsMove(active) {
         this.isMove = active
+    }
+
+    setIsWood(active) {
+        this.isWood = active
     }
 
     setPos(pos) {

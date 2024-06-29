@@ -19,7 +19,7 @@ export class TrailLine extends BaseLine {
         super.onInit(index);
         this.direction = this.getRamdomTrueFalse()
         this.durationSpawn = this.getRandomStep(7, 10, 0.3)
-        this.speed = this.getRandomStep(20, 25, 0.3)
+        this.speed = this.getRandomStep(15, 20, 0.3)
         this.durationVehicalDestroy = this.getRandomStep(3, 4, 0.1)
     }
 
